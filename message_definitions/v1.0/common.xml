@@ -2392,7 +2392,7 @@
       </entry>
       <entry value="5002" name="MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION" hasLocation="true" isDestination="false">
         <description>Fence vertex for an exclusion polygon (the polygon must not be self-intersecting). The vehicle must stay outside this area. Minimum of 3 vertices required.
-          The vertices for a polygon must be sent sequentially, each with param1 set to the total number of vertices in the polygon.                
+          The vertices for a polygon must be sent sequentially, each with param1 set to the total number of vertices in the polygon.
         </description>
         <param index="1" label="Vertex Count" minValue="3" increment="1">Polygon vertex count. This is the number of vertices in the current polygon (all vertices will have the same number).</param>
         <param index="2">Reserved</param>
@@ -7981,6 +7981,21 @@
       <field type="float" name="current" units="A" invalid="NaN">Current draw from the winch. NaN if unknown</field>
       <field type="int16_t" name="temperature" units="degC" invalid="INT16_MAX">Temperature of the motor. INT16_MAX if unknown</field>
       <field type="uint32_t" name="status" enum="MAV_WINCH_STATUS_FLAG">Status flags</field>
+    </message>
+    <message id="11100" name="UUID_REQ">
+        <description>Request to read UUID from fixed flash address.</description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+    </message>
+    <message id="11101" name="UUID_SET">
+        <description>Write 20-byte UUID to fixed flash address.</description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="uint8_t[20]" name="uuid">20-byte UUID to write</field>
+    </message>
+    <message id="11102" name="UUID_DATA">
+        <description>Response containing the UUID.</description>
+        <field type="uint8_t[20]" name="uuid">20-byte UUID</field>
     </message>
     <message id="12900" name="OPEN_DRONE_ID_BASIC_ID">
       <description>Data for filling the OpenDroneID Basic ID message. This and the below messages are primarily meant for feeding data to/from an OpenDroneID implementation. E.g. https://github.com/opendroneid/opendroneid-core-c. These messages are compatible with the ASTM F3411 Remote ID standard and the ASD-STAN prEN 4709-002 Direct Remote ID standard. Additional information and usage of these messages is documented at https://mavlink.io/en/services/opendroneid.html.</description>
