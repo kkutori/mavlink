@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<mavlink>
+  <messages>
+    <message id="11100" name="UUID_REQ">
+        <description>Request to read UUID from fixed flash address.</description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+    </message>
+    <message id="11101" name="UUID_SET">
+        <description>Write 20-byte UUID to fixed flash address.</description>
+        <field type="uint8_t" name="target_system">System ID</field>
+        <field type="uint8_t" name="target_component">Component ID</field>
+        <field type="uint8_t[20]" name="uuid">20-byte UUID to write</field>
+    </message>
+    <message id="11102" name="UUID_DATA">
+        <description>Response containing the UUID.</description>
+        <field type="uint8_t[20]" name="uuid">20-byte UUID</field>
+    </message>
+  </messages>
+</mavlink>
